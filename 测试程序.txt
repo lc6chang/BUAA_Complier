@@ -1,0 +1,151 @@
+const char test_cover_a='a',test_if='+';
+const int test_cover_1=1;
+const char test_while_a='0',test_while_z='z';
+
+int test_cover_2,test_cover_3[5];
+char test_cover_b,test_cover_c[10];
+char test_function_1;
+int test_while,test_function_2;
+
+int Test_Function_1(int n){
+	return(n+n*n);
+}
+int Test_Function_2(int n){
+	if(n<=0) return(-1);
+	if(n==1) return(1);
+	if(n==2) return(1);
+	return(Test_Function_2(n-1)+Test_Function_2(n-2));
+}
+void test_cover(){
+	const char test_cover_a='A';
+	const int test_cover_1=-1;
+	int test_cover_2,test_cover_3[6];
+	char test_cover_b,test_cover_c[5];
+	test_cover_2=-2;
+	test_cover_3[3]=-3;
+	test_cover_b='B';
+	test_cover_c[3]='C';
+	printf(test_cover_a);
+	printf(test_cover_1);
+}
+void Test_IF(char test_if){
+	if((test_if)>('0')){
+		if((test_if)>=('A')){
+			if((test_if)>('a')){
+				printf("test_if_error_3");
+				return;
+			}
+			if((test_if)==('_')){
+				printf("test_if_right,the char is ",test_if);
+				return;
+			}
+			printf("test_if_error_4");
+			return;
+		}
+		printf("test_if_error_2");
+		return;
+	}
+	printf("test_if_error_1");
+}
+void Test_While(int test_while){
+	int count1;
+	int count2;
+	int count3;
+	count1=0;
+	count2=0;
+	count3=0;
+	while(test_while<('z')){
+		while(test_while<=('Z')){
+			while(test_while<('A')){
+				count1=count1+1;
+				test_while=test_while+1;
+			}
+			count2=count2+2;
+			test_while=test_while+1;
+		}
+		count3=count3+3;
+		test_while=test_while+1;
+	}
+	printf("the count1 is ",count1);
+	printf("the count2 is ",count2);
+	printf("the count3 is ",count3);
+	printf("the test_while is ",test_while);
+}
+void Test_Switch(int test_switch_1,char test_switch_2,int test_switch_3){
+	switch(test_switch_1+test_switch_3-test_switch_2){
+		case 100 : printf("test_switch_error_1");
+		case -92 : {
+			switch(test_switch_2){
+				case 'a':printf("test_switch_error_4");
+				case '*':printf("test_switch_error_5");
+				case '/':{
+					switch(test_switch_3){
+						case -0 :printf("test_switch_error_6");
+						default: printf("test_switch_right!");
+					}
+				}
+			}
+		}
+		case +0 : printf("test_switch_error_2");
+		default : printf("test_switch_error_3");
+	}
+}
+
+int test_array(){
+	int array_int[5],i,result;
+	char array_char[5];
+	array_char[0]='1';array_char[1]='1';array_char[2]='/';
+	array_char[3]='-';array_char[4]='K';
+	i=0;
+	while(i<5){
+		array_int[i]=i*5+1;
+		i=i+1;
+	}
+	i=0;
+	result=0;
+	while(i<5){
+		result=result+array_int[i]*array_char[i];
+		i=i+1;
+	}
+	return(result);
+}
+char test_expression(){
+	if( 'A'+'d'*Test_Function_1(Test_Function_1(Test_Function_1(2))) !=180665 ) return('a');
+	if( -'+'*-3+-0--100*('a'-'b') !=29 ) return('b');
+	if( -test_cover_3[3]+(1000-+0--2)/2 != 498) return('c');
+	if( +6/10-+6/(6+-1)*7*test_cover_c[3] !=-693 ) return('d');
+	if( (((+6-3)*7+5)*8+9)*-10+11!=-2159 ) return('e');
+	return('R');
+}
+void main(){
+	int test_function_2;	
+
+	scanf(test_function_1,test_function_2);
+	scanf(test_cover_2,test_cover_b);
+	scanf(test_while);	
+	
+	printf(Test_Function_1(Test_Function_1(Test_Function_1(Test_Function_1(test_function_1-'a')))));
+
+	printf(Test_Function_2(test_function_2));
+
+	test_cover_3[3]=3;
+	test_cover_c[3]='c';
+	test_cover();
+	printf(test_cover_2);
+	printf(test_cover_b);
+	printf(test_cover_3[3]);	
+	printf(test_cover_c[3]);
+	
+	Test_IF('_');
+	
+	Test_While(('0'));
+
+	Test_Switch(5,'/',-50);
+
+	printf("test_array is ",test_array());
+	printf(test_expression());
+	printf("");
+	printf(-100);
+	printf('L');
+	printf(" !#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~");
+}
